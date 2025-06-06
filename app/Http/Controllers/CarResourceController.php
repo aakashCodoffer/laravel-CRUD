@@ -60,7 +60,7 @@ class CarResourceController extends Controller
     public function edit(int $id)
     {
         $car_title = "Edit Details";
-        $car_type = "edit";
+        $car_type = "edit"; 
         $car = Car::findOrFail($id);
         return view("car.cars", compact('car_title', 'car','car_type'));
     }
