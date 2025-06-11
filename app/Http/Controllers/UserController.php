@@ -32,8 +32,8 @@ class UserController extends Controller{
             'email'    => $req->email,
             'password' => Hash::make($req->password),
             ]);
-            Auth::guard("users")->login($user);
-            return redirect("register");
+            Auth::guard("web")->login($user);
+            return redirect("/cars");
         
        
     }
@@ -51,7 +51,7 @@ class UserController extends Controller{
 
     public function logout()
     {
-        Auth::guard('users')->logout();
+        Auth::guard('web')->logout();
         return redirect('/login');
     }
 }

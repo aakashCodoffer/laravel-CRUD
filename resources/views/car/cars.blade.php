@@ -5,13 +5,14 @@
 @section('content')
 
     @if ($car_type === 'index')
-        <a href="/cars/create" class="block">Add New One</a>
+     
+        <a href="{{ route("cars.create") }}" class="block">Add New One</a>
         <table class='table-fixed hight  text-left '>
             <thead class='  fs-5 rounded-top text-black border border-bottom-0'>
                 <tr class="">
                     <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>id</th>
                     <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>brand-name</th>
-                    <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>name-plate</th>
+                    <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>name-plate</th>1
                     <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>year</th>
                     <th class='fw-light fs-4 px-7 py-2 rounded-tl-lg'>edit</th>
                 </tr>
@@ -31,6 +32,9 @@
                 @endforeach
             </tbody>
         </table>
+            <div class="mt-4">
+                {{ $cars->links() }}
+            </div>
     @elseif ($car_type === 'add' || $car_type === 'edit')
         {{-- @dd($car_type) --}}
         <div class="flex justify-center items-center h-full w-full pt-10">

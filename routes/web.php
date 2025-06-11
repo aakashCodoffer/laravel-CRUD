@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarResourceController;
 use App\Http\Controllers\SuccessCarController;
@@ -14,7 +15,7 @@ Route::get("/product/{firstValue}/{secValue}", function (int $firstValue,int $se
 })->whereNumber(["firstValue","secValue"]);
 
 //resource cars controller
-Route::middleware("auth")->resource("/cars", CarResourceController::class);
+Route::middleware([AuthMiddleware::class])->resource("/cars", CarResourceController::class);
 
 Route::get("/login",[UserController::class,'showLoginForm'])->name("login.user");
 Route::post("/login",[UserController::class,'login'])->name("login");
@@ -22,4 +23,4 @@ Route::post("/login",[UserController::class,'login'])->name("login");
 Route::get("/register",[UserController::class,'showRegisterForm'])->name("register.user");
 Route::post("/register",[UserController::class,'createAccount'])->name("register");
 
-// Route::post("/logout",[UserAuth/])                       
+Route::post("/logout",[UserController::class,'logout'])->name("logout");

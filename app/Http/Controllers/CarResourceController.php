@@ -16,7 +16,7 @@ class CarResourceController extends Controller
     {
         $car_title = "List Of Cars";
         $car_type = "index";
-        $cars = Car::all();
+        $cars = Car::paginate(15);
        return view("car.cars", compact('car_title', 'cars','car_type'));
     }
 
